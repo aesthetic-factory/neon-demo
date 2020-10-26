@@ -5,9 +5,7 @@
   "main": "lib/index.js",
   "author": "tragedyhk <alex99hk@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "neon-cli": "^0.4.2"
-  },
+  "dependencies": {},
   "scripts": {
     "install": "neon build"
   }

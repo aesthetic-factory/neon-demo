@@ -12,7 +12,12 @@ name = "neon_demo"
 crate-type = ["cdylib"]
 
 [build-dependencies]
-neon-build = "0.4.2"
+neon-build = "0.5.0"
 
 [dependencies]
-neon = "0.4.2"
+neon = "0.5.0"
+num_cpus = "1.13.0"
+sha2 = "0.9.1"
+
+[profile.release]
+opt-level = 3
