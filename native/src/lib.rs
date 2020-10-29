@@ -1,6 +1,6 @@
 extern crate num_cpus;
 use neon::prelude::*;
-use sha2::{Digest, Sha256};
+use sha2::{Digest, Sha256, Sha512};
 
 fn hello(mut cx: FunctionContext) -> JsResult<JsString> {
     Ok(cx.string("hello node"))
@@ -62,11 +62,21 @@ pub fn sha256(mut cx: FunctionContext) -> JsResult<JsString> {
     Ok(cx.string(string))
 }
 
+pub fn sha512(mut cx: FunctionContext) -> JsResult<JsString> {
+    let input = cx.argument::<JsString>(0)?.value();
+    let mut hasher = Sha512::new();
+    hasher.update(input);
+    let result = hasher.finalize();
+    let string = format!("{:x}", result);
+    Ok(cx.string(string))
+}
+
 register_module!(mut cx, {
     cx.export_function("hello", hello)?;
     cx.export_function("thread_count", thread_count)?;
     cx.export_function("find_prime", find_prime)?;
     cx.export_function("fibonacci", run_fibonacci)?;
     cx.export_function("sha256", sha256)?;
+    cx.export_function("sha512", sha512)?;
     Ok(())
 });
