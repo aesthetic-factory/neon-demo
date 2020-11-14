@@ -1,0 +1,23 @@
+{
+  "name": "wasm-pack-demo",
+  "collaborators": [
+    "tragedyhk <alex99hk@gmail.com>"
+  ],
+  "description": "A Rust wasm-pack demo project",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tragedyhk/wasm-pack-demo"
+  },
+  "files": [
+    "wasm_pack_demo_bg.wasm",
+    "wasm_pack_demo.js",
+    "wasm_pack_demo_bg.js",
+    "wasm_pack_demo.d.ts",
+    "LICENSE_APACHE",
+    "LICENSE_MIT"
+  ],
+  "main": "wasm_pack_demo.js",
+  "types": "wasm_pack_demo.d.ts"
+}

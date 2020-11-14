@@ -71,6 +71,13 @@ pub fn sha512(mut cx: FunctionContext) -> JsResult<JsString> {
     Ok(cx.string(string))
 }
 
+pub fn blake3_256(mut cx: FunctionContext) -> JsResult<JsString> {
+    let input = cx.argument::<JsString>(0)?.value();
+    let result = blake3::hash(input.as_bytes());
+    let hex = result.to_hex();
+    Ok(cx.string(hex))
+}
+
 register_module!(mut cx, {
     cx.export_function("hello", hello)?;
     cx.export_function("thread_count", thread_count)?;
@@ -78,5 +85,6 @@ register_module!(mut cx, {
     cx.export_function("fibonacci", run_fibonacci)?;
     cx.export_function("sha256", sha256)?;
     cx.export_function("sha512", sha512)?;
+    cx.export_function("blake3_256", blake3_256)?;
     Ok(())
 });
